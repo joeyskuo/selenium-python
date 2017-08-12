@@ -1,8 +1,11 @@
 from selenium.webdriver.common.by import By
+from base.base_page import BasePage
 
-class HomePage:
+
+class HomePage(BasePage):
 
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
 
     # Locators
@@ -28,15 +31,3 @@ class HomePage:
         first_result_xpath = self._first_result_base_xpath.format(PRODUCT_PLACEHOLDER = product)
         return self.isElementPresent(first_result_xpath, "xpath")
 
-    def isElementPresent(self, locator, locatorType="id"):
-        try:
-            if locatorType == "id":
-                element = self.driver.find_element(By.ID, locator)
-            elif locatorType == "xpath":
-                element = self.driver.find_element(By.XPATH, locator)
-            else:
-                print("locatorType " + locatorType + " not supported.")
-                return None
-        except:
-            return False
-        return True

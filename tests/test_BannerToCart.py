@@ -1,10 +1,6 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-import pytest
-
 from pages.home_page import HomePage
 from pages.product_page import ProductPage
-
+import pytest
 
 @pytest.mark.usefixtures("setUp")
 class Test_BannerToCart():

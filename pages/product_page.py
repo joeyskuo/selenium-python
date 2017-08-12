@@ -1,8 +1,10 @@
 from selenium.webdriver.common.by import By
+from base.base_page import BasePage
 
-class ProductPage:
+class ProductPage(BasePage):
 
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
 
     # Locators
@@ -14,10 +16,3 @@ class ProductPage:
 
     def verifyAddToCartSuccessful(self):
         return self.isElementPresent(self._added_to_cart_text_id)
-
-    def isElementPresent(self, locator, locatorType="id"):
-        try:
-            element = self.driver.find_element(By.ID, locator)
-        except:
-            return False
-        return True
